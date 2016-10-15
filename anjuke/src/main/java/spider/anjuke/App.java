@@ -2,6 +2,7 @@ package spider.anjuke;
 
 import java.util.ArrayList;
 
+import spider.anjuke.dao.Jdbc;
 import spider.anjuke.model.AnjukeHouseInfo;
 import spider.anjuke.parse.ParseAnjuke;
 
@@ -14,7 +15,8 @@ public class App {
 			for (int i = 2;; i++) {
 				ArrayList<AnjukeHouseInfo> infos = anjuke.getInfo(url);
 				for (AnjukeHouseInfo info : infos) {
-					System.out.println(info + "\n\n");
+					// System.out.println(info + "\n\n");
+					Jdbc.insert(info);
 				}
 				flag = true;
 				if (flag) {
@@ -22,8 +24,8 @@ public class App {
 				}
 			}
 		} catch (Exception e) {
-			System.out
-					.println("------------------------------结---------------------束----------------------------------------");
+			System.out.println(
+					"------------------------------结---------------------束----------------------------------------");
 		}
 
 	}

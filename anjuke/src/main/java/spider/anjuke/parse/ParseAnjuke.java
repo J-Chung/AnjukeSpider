@@ -14,6 +14,8 @@ public class ParseAnjuke {
 
 	public ArrayList<AnjukeHouseInfo> getInfo(String url) {
 
+		System.out.println("===============================正在解析HTML============================================");
+
 		ArrayList<AnjukeHouseInfo> infos = new ArrayList<AnjukeHouseInfo>();
 
 		Document doc = null;
@@ -34,9 +36,7 @@ public class ParseAnjuke {
 
 		String[] str = { "价", "元", "万", "售价待定", "低", "[", "]", " " };// 判断
 
-		if (areaName.size() == adresss.size()
-				&& areaName.size() == prices.size()
-				&& adresss.size() == prices.size()) {
+		if (areaName.size() == adresss.size() && areaName.size() == prices.size() && adresss.size() == prices.size()) {
 
 			for (int i = 0; i < areaName.size(); i++) {
 
@@ -51,28 +51,20 @@ public class ParseAnjuke {
 				// 设置地址
 				info.setHouseInfo(adresss.get(i).text());
 
-				if (prices.get(i).text().indexOf(str[0]) > 0
-						&& prices.get(i).text().indexOf(str[1]) > 0) {
-					String price = (prices.get(i).text().split(str[0])[1])
-							.split(str[1])[0];
+				if (prices.get(i).text().indexOf(str[0]) > 0 && prices.get(i).text().indexOf(str[1]) > 0) {
+					String price = (prices.get(i).text().split(str[0])[1]).split(str[1])[0];
 					// System.out.println(price);
 					info.setHousePrice(price);
-				} else if (prices.get(i).text().indexOf(str[0]) > 0
-						&& prices.get(i).text().indexOf(str[2]) > 0) {
-					String price = (prices.get(i).text().split(str[0])[1])
-							.split(str[2])[0];
+				} else if (prices.get(i).text().indexOf(str[0]) > 0 && prices.get(i).text().indexOf(str[2]) > 0) {
+					String price = (prices.get(i).text().split(str[0])[1]).split(str[2])[0];
 					// System.out.println(price);
 					info.setHousePrice(price);
-				} else if (prices.get(i).text().indexOf(str[4]) > 0
-						&& prices.get(i).text().indexOf(str[1]) > 0) {
-					String price = (prices.get(i).text().split(str[4])[1])
-							.split(str[1])[0];
+				} else if (prices.get(i).text().indexOf(str[4]) > 0 && prices.get(i).text().indexOf(str[1]) > 0) {
+					String price = (prices.get(i).text().split(str[4])[1]).split(str[1])[0];
 					// System.out.println(price);
 					info.setHousePrice(price);
-				} else if (prices.get(i).text().indexOf(str[4]) > 0
-						&& prices.get(i).text().indexOf(str[1]) > 0) {
-					String price = (prices.get(i).text().split(str[4])[1])
-							.split(str[1])[0];
+				} else if (prices.get(i).text().indexOf(str[4]) > 0 && prices.get(i).text().indexOf(str[1]) > 0) {
+					String price = (prices.get(i).text().split(str[4])[1]).split(str[1])[0];
 					// System.out.println(price);
 					info.setHousePrice(price);
 				} else {
